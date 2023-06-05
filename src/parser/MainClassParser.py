@@ -42,19 +42,17 @@ class MainClassParser:
                         # TODO: Allow us to know if it is an optional or mandatory parameter
                     )
                 )
-            ret_with_example = docstring_obj.meta[0].description.split('Example response:')
+            ret_with_example = docstring_obj.meta[-1].description.split('Example response:')
             ret.return_description = ret_with_example[0]
             ret.example_response = ret_with_example[1]
             ret.return_type = docstring_obj.returns.type_name
-            for meta in docstring_obj.meta:
-                if "raises" in meta.description:
-                    exception_name, exception_description = meta.description.split(':', 1)
-                    ret.exceptions.append(
-                        MethodException(
-                            exception_name,
-                            exception_description
-                        )
+            for exception in docstring_obj.raises:
+                ret.exceptions.append(
+                    MethodException(
+                        exception.type_name,
+                        exception.description
                     )
+                )
         return ret
 
     def parse_file(self, path: str) -> MainClass:

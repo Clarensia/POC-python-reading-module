@@ -40,8 +40,8 @@ class BlockchainAPIs:
     async def exchanges(self, page: int = 1, blockchain: str | None = None) -> Exchanges:
         """Get the list of supported exchanges by the API
 
-        @raises BlockchainNotSupportedException: When an invalid blockchain id is given
-        @raises InvalidPageException: When an invalid page is given
+        :raises BlockchainNotSupportedException: When an invalid blockchain id is given
+        :raises InvalidPageException: When an invalid page is given
 
         :param page: You can ignore this value for this version of the API., defaults to 1
         :type page: int, Optional
