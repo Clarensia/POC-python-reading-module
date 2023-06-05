@@ -3,42 +3,42 @@ from typing import List
 from src.dataclasses.MethodException import MethodException
 from src.dataclasses.MethodParameter import MethodParameter
 
-@dataclass(frozen=True)
+@dataclass()
 class MainClassMethod:
     """The main class will have multiple methods
     
     These methods are the one that interact with our API
     """
 
-    definition: str
+    definition: str = None
     """The definition of the method
     
     For example:
     async def amount_out(self, blockchain: str, tokenIn: str, tokenOut: str, amountIn: int, exchange: str | None = None) -> List[AmountOut]:
     """
 
-    short_description: str
+    short_description: str = None
     """The small description of the method.
     
     We will put this value inside of the metadata of the page as description
     """
     
-    long_description: str
+    long_description: str = None
     """The long description of the method
     
     This description is longer than the short one and may include multiple lines
     """
 
-    parameters: List[MethodParameter]
+    parameters: List[MethodParameter] = []
     """Each method have multiple parameters, this list will contain them
     in the right order.
     """
 
-    return_type: str
+    return_type: str = None
     """The returned type
     """
 
-    example_response: str
+    example_response: str = None
     """An example of a possible response from the API.
     
     For example:
@@ -60,10 +60,10 @@ class MainClassMethod:
     Please note that the example response have no space at the begining of the line
     """
 
-    return_description: str
+    return_description: str = None
     """The description that we will put for each return value
     """
 
-    exceptions: List[MethodException]
+    exceptions: List[MethodException] = []
     """The exception that the method can throw
     """

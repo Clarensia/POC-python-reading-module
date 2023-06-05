@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass()
 class MethodParameter:
     """Each method from the MainClass have some parameter that the user
     have to specify (example: the blockchain, the exchanges...)
@@ -9,6 +9,10 @@ class MethodParameter:
 
     name: str
     """The name of the parameter
+    """
+
+    description: str
+    """The description of the parameter
     """
 
     param_type: str

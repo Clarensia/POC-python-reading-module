@@ -4,23 +4,23 @@ from typing import List
 from src.dataclasses.MainClassMethod import MainClassMethod
 
 
-@dataclass(frozen=True)
+@dataclass()
 class MainClass:
     """Represent the main class that is parsed
     """
 
-    name: str
+    name: str = None
     """The name of the main class
     """
     
-    short_description: str
+    short_description: str = None
     """The short description that we will use inside of the metadata
     """
     
-    long_description: str
+    long_description: str = None
     """The long description of the class
     """
 
-    methods: List[MainClassMethod]
+    methods: List[MainClassMethod] = []
     """The list of methods that are defined inside of the class
     """

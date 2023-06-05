@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass()
 class MethodException:
     """Represent the exceptions that a method can throw
     """
