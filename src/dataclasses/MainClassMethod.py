@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 from src.dataclasses.MethodException import MethodException
 from src.dataclasses.MethodParameter import MethodParameter
@@ -29,7 +29,7 @@ class MainClassMethod:
     This description is longer than the short one and may include multiple lines
     """
 
-    parameters: List[MethodParameter] = []
+    parameters: List[MethodParameter] = field(default_factory=list)
     """Each method have multiple parameters, this list will contain them
     in the right order.
     """
@@ -64,6 +64,6 @@ class MainClassMethod:
     """The description that we will put for each return value
     """
 
-    exceptions: List[MethodException] = []
+    exceptions: List[MethodException] = field(default_factory=list)
     """The exception that the method can throw
     """

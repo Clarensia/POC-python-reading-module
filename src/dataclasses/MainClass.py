@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 
 from src.dataclasses.MainClassMethod import MainClassMethod
@@ -21,6 +21,6 @@ class MainClass:
     """The long description of the class
     """
 
-    methods: List[MainClassMethod] = []
+    methods: List[MainClassMethod] = field(default_factory=list)
     """The list of methods that are defined inside of the class
     """
