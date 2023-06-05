@@ -13,7 +13,7 @@ class MainClassParser:
     Parse the main file that has multiple functions.
     """
 
-    def _parse_function(node: ast.stmt) -> MainClassMethod:
+    def _parse_function(self, node: ast.stmt) -> MainClassMethod:
         """Transform an ast node to a MainClassMethod
 
         :param node: The node that we use
