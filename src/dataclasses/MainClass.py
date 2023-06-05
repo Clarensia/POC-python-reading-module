@@ -1,4 +1,7 @@
 from dataclasses import dataclass
+from typing import List
+
+from src.dataclasses.MainClassMethod import MainClassMethod
 
 
 @dataclass(frozen=True)
@@ -16,4 +19,8 @@ class MainClass:
     
     long_description: str
     """The long description of the class
+    """
+
+    methods: List[MainClassMethod]
+    """The list of methods that are defined inside of the class
     """
