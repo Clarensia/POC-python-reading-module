@@ -1,8 +1,9 @@
+from dataclasses import dataclass
 from typing import List
 from src.dataclasses.MethodException import MethodException
 from src.dataclasses.MethodParameter import MethodParameter
 
-
+@dataclass(frozen=True)
 class MainClassMethod:
     """The main class will have multiple methods
     
