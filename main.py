@@ -11,7 +11,8 @@ def extract_info(file_name):
             if class_docstring:
                 print("Description of the class:", class_docstring)
             for sub_node in node.body:
-                if isinstance(sub_node, ast.FunctionDef):
+                if isinstance(sub_node, ast.AsyncFunctionDef):
+                    print("function")
                     print("\nFunction definition:", ast.unparse(sub_node).split(':')[0] + ':')
                     func_docstring = ast.get_docstring(sub_node)
                     if func_docstring:
