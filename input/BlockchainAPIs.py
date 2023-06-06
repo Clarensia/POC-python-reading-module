@@ -45,8 +45,10 @@ class BlockchainAPIs:
 
         :param page: You can ignore this value for this version of the API., defaults to 1
         :type page: int, Optional
+        :example page: 1
         :param blockchain: The blockchain from which you want to get the exchanges, defaults to None
         :type blockchain: str, Optional
+        :example blockchain: ethereum
         :return: The list of all supported exchange of the API.
         
         You can use the exchange id responded from this for other API calls.

@@ -1,4 +1,5 @@
 import ast
+from typing import Dict, List
 
 import docstring_parser
 
@@ -12,6 +13,24 @@ class MainClassParser:
     """
     Parse the main file that has multiple functions.
     """
+
+    def _param_to_example(self, meta: List[docstring_parser.DocstringMeta]) -> Dict[str, str]:
+        """Create a dictionary mapping all parameter to their example.
+        
+        An example is when we write for example:
+        :example page: 1
+
+        :param meta: The meta that we got from the Docstring
+        :type meta: List[docstring_parser.DocstringMeta]
+        :return: A dictionary containing as key the parameter and as value the example for the
+                 parameter
+        :rtype: Dict[str, str]
+        """
+        ret = {}
+        for meta_desc in meta:
+            if len(meta_desc.args) > 0 and meta_desc.args[0] == "example":
+                ret[meta_desc.args[1]] = meta_desc.description
+        return ret
 
     def _parse_function(self, node: ast.stmt) -> MainClassMethod:
         """Transform an ast node to a MainClassMethod
@@ -31,14 +50,15 @@ class MainClassParser:
                 ret.long_description = docstring_obj.long_description
             else:
                 ret.long_description = docstring_obj.short_description
+            param_to_example = self._param_to_example(docstring_obj.meta)
             for param in docstring_obj.params:
+                
                 ret.parameters.append(
                     MethodParameter(
                         param.arg_name,
                         param.description,
                         param.type_name,
-                        # TODO: Find a way to add the example
-                        None
+                        None if param.arg_name not in param_to_example else param_to_example[param.arg_name]
                         # TODO: Allow us to know if it is an optional or mandatory parameter
                     )
                 )
