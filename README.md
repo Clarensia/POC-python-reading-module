@@ -1,5 +1,7 @@
 # POC Python read module
 
+The final code that generate the full documentation has been written in: [Sphinxusaurus](https://github.com/Clarensia/Sphinxusaurus)
+
 ## Introduction
 
 The goal of this proof of concept is to be able to parse a Python docstring file.
